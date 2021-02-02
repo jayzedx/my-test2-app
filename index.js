@@ -29,8 +29,8 @@ const fetch = require('node-fetch');
       (val) => {}
     );
     JSDOM.fromURL('https://codequiz.azurewebsites.net', options).then((dom) => {
-      dom.window.document.querySelector('input[type="button"]').value;
-      const nodeList = dom.window.document.querySelectorAll('tbody tr');
+      // dom.window.document.querySelector('input[type="button"]').value;
+      // const nodeList = dom.window.document.querySelectorAll('tbody tr');
       // nodeList.forEach((htmlTableRowElement) => {
       //   const cells =  htmlTableRowElement.cells[0].innerText
       // });
@@ -39,8 +39,10 @@ const fetch = require('node-fetch');
         const cell = node.cells[0];
         return cell.innerHTML.trim() === key.trim();
       });
-      const value = rows[0].cells[1].innerHTML;
-      console.log(value);
+      if (rows.length > 0) {
+        const value = rows[0].cells[1].innerHTML;
+        console.log(value);
+      } else console.log('Not found');
     });
   } catch (err) {
     console.log(err);
