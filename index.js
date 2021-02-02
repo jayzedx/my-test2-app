@@ -30,10 +30,10 @@ const fetch = require('node-fetch');
     );
     JSDOM.fromURL('https://codequiz.azurewebsites.net', options).then((dom) => {
       // dom.window.document.querySelector('input[type="button"]').value;
-      // const nodeList = dom.window.document.querySelectorAll('tbody tr');
       // nodeList.forEach((htmlTableRowElement) => {
       //   const cells =  htmlTableRowElement.cells[0].innerText
       // });
+      const nodeList = dom.window.document.querySelectorAll('tbody tr');
       const arr = Array.from(nodeList);
       const rows = arr.filter((node) => {
         const cell = node.cells[0];
